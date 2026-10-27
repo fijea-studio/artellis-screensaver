@@ -29,6 +29,9 @@ step at a time. The rest of this file is for changing the code.
 adb shell logcat -d -s Artellis                    # what the screensaver did
 ```
 
+**Releases:** bump `versionCode` and `versionName` in `app/build.gradle`, commit, then push a tag `v<versionName>`.
+`.github/workflows/release.yml` builds the signed APK and attaches it to a draft Release to review and publish.
+
 On Windows the build directory is `%LOCALAPPDATA%\artellis-build` (OneDrive locks files in `app/build`).
 
 ## Rules

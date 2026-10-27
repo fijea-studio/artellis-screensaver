@@ -1,0 +1,51 @@
+name: Something isn't working
+description: Artellis won't install, won't start, or doesn't look right.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. **Please don't post your TV's IP address, Wi-Fi name or any account details.**
+  - type: input
+    id: tv
+    attributes:
+      label: TV brand and model
+      placeholder: e.g. Sony Bravia KD-55X85J, Chromecast with Google TV
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version
+      description: SETUP.md step 1 shows where to find it.
+      placeholder: e.g. Android 12, Google TV OS 14
+    validations:
+      required: true
+  - type: dropdown
+    id: install
+    attributes:
+      label: How did you install it?
+      options:
+        - Downloaded APK from Releases
+        - Built from source
+        - Not installed yet (install fails)
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Artellis version
+      description: The Release you downloaded, or TV Settings > Apps > Artellis.
+      placeholder: e.g. 1.0.0
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what you saw instead. Error messages from the install script help a lot.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot or log (optional)
+      description: "A photo of the TV is fine. Log: `adb shell logcat -d -s Artellis`"

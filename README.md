@@ -59,6 +59,10 @@ TV_HOST=192.168.1.50 APK=artellis-1.0.0.apk scripts/install.sh          # macOS,
 Accept the debugging prompt on the TV the first time. The script installs Artellis, lets it show the song
 that is playing, makes it the screensaver and starts it. Your previous screensaver is remembered.
 
+**Updates:** Artellis doesn't check for updates itself (it only talks to the museums). To hear about new
+versions, choose **Watch > Custom > Releases** at the top of this page, then run the same command with the
+new APK. Your paintings and settings are kept.
+
 ### From source
 
 JDK 17 and the Android SDK (platform 34). Then the same scripts without the APK: they build first.

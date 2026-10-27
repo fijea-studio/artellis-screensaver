@@ -1,0 +1,11 @@
+name: Idea
+description: Suggest a theme, a museum, or something Artellis could do better.
+labels: [idea]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What would you like, and why would it make your wall better?
+    validations:
+      required: true

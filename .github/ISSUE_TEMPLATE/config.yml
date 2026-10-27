@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Installation guide
+    url: https://github.com/fijea-studio/artellis-screensaver/blob/main/SETUP.md
+    about: Step-by-step setup, plus a table of common problems and fixes.
