@@ -28,3 +28,6 @@ shot.png
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Personal notes for Claude
+CLAUDE.local.md
