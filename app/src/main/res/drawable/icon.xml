@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A gilt frame with a small landscape painting. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <path android:fillColor="#FF1C1A17" android:pathData="M0,0h48v48h-48z" />
+    <path android:fillColor="#FFB8934A" android:pathData="M8,12h32v24h-32z" />
+    <path android:fillColor="#FF6E8FA8" android:pathData="M11,15h26v18h-26z" />
+    <path android:fillColor="#FFE9C46A" android:pathData="M30,20m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+    <path android:fillColor="#FF4A5E3A" android:pathData="M11,33l8,-9l6,6l4,-3l8,6z" />
+</vector>

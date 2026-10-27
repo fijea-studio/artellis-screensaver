@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <!-- Only to fetch paintings from api.artic.edu / www.artic.edu and collectionapi.metmuseum.org /
+         images.metmuseum.org. Nothing about the TV or its viewer is sent. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:icon="@drawable/icon"
+        android:banner="@drawable/banner"
+        android:supportsRtl="true">
+
+        <!-- `settings put secure screensaver_components io.github.fijeastudio.artellis/.ArtellisDream` (the install script does it). -->
+        <service
+            android:name=".ArtellisDream"
+            android:label="@string/dream_name"
+            android:exported="true"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.service.dream" android:resource="@xml/dream" />
+        </service>
+
+        <!-- About and the one setting (the night filter). Opened by the TV's screensaver settings
+             (xml/dream.xml: Settings > Screen saver > Artellis), which needs it exported. -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/settings_label"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+
+        <!-- An "Artellis settings" tile in the app list, hidden by default. Only for TVs whose settings have no
+             screensaver menu (Google TV): the install script's -SettingsTile shows it. -->
+        <activity-alias
+            android:name=".SettingsTile"
+            android:targetActivity=".SettingsActivity"
+            android:enabled="false"
+            android:exported="true"
+            android:label="@string/settings_label">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- Lets the screensaver read what is playing (song and artist) from the TV's media sessions.
+             Switched on over ADB with `cmd notification allow_listener`; it reads no notifications. -->
+        <service
+            android:name=".MediaListener"
+            android:exported="true"
+            android:label="@string/listener_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

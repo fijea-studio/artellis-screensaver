@@ -1,0 +1,30 @@
+# Build output
+.gradle/
+build/
+app/build/
+captures/
+.cxx/
+.externalNativeBuild/
+
+# Local machine and secrets (never commit)
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Release files go on the Releases page, not in git
+*.apk
+*.aab
+
+# Per-TV restore files written by the install scripts (contain the TV's IP)
+artellis-restore-*.txt
+
+# Screenshots taken while testing
+shot.png
+
+# IDE and OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db

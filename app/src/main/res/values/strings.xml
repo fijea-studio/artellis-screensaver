@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Artellis</string>
+    <string name="dream_name">Artellis</string>
+    <string name="settings_label">Artellis settings</string>
+    <string name="listener_name">Artellis: now playing</string>
+    <string name="gathering">Hanging today\'s paintings…</string>
+    <string name="offline">No paintings yet. They arrive once the TV is online.</string>
+
+    <!-- Settings page. Plain English: many readers aren't native speakers. -->
+    <string name="tagline">A screensaver that hangs famous paintings on your TV.</string>
+    <string name="about">Free-to-use art from the Art Institute of Chicago and The Met, in small themed walls. New walls every day.</string>
+    <plurals name="walls_saved">
+        <item quantity="one">%d wall saved</item>
+        <item quantity="other">%d walls saved</item>
+    </plurals>
+    <string name="storage_privacy">Old walls are deleted to save space.\nNo ads. No tracking.</string>
+    <string name="night_filter">Warm light at night</string>
+    <string name="night_filter_hint">Less blue light and slightly dimmer, for the evening.</string>
+    <string name="to">to</string>
+    <string name="preview">Preview</string>
+    <string name="preview_waiting">Your first painting is on its way.</string>
+    <string name="preview_offline">Paintings arrive once the TV is online.</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="github" translatable="false">github.com/fijea-studio/artellis-screensaver</string>
+</resources>

@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+}
+
+// On Windows the build output goes to %LOCALAPPDATA%\artellis-build, outside OneDrive or Dropbox, whose
+// syncing locks Gradle's temporary files ("Unable to delete directory"). Elsewhere it stays in app/build.
+def localAppData = System.getenv('LOCALAPPDATA')
+if (localAppData) {
+    layout.buildDirectory.set(file("${localAppData}/artellis-build"))
+}
+
+// Release signing: a keystore.properties file next to settings.gradle (never committed) with storeFile,
+// storePassword, keyAlias and keyPassword. Without it the release is signed with the debug key, which is
+// fine for your own TV but can't be updated by someone else's build.
+def keystoreFile = rootProject.file('keystore.properties')
+def keystore = new Properties()
+if (keystoreFile.exists()) keystoreFile.withInputStream { keystore.load(it) }
+
+android {
+    namespace 'io.github.fijeastudio.artellis'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'io.github.fijeastudio.artellis'
+        // DreamService, hardware bitmaps and Resources.getFont: Android 8 and up.
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    signingConfigs {
+        if (keystoreFile.exists()) {
+            release {
+                storeFile rootProject.file(keystore['storeFile'])
+                storePassword keystore['storePassword']
+                keyAlias keystore['keyAlias']
+                keyPassword keystore['keyPassword']
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig keystoreFile.exists() ? signingConfigs.release : signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
