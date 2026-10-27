@@ -170,9 +170,8 @@ Without it, release builds are signed with your debug key: fine for your own TV.
 
 ## Support
 
-Artellis is free and always will be. If it brightens your living room and you'd like to say thanks:
-
-- [PayPal](https://paypal.me/fijea)
+Artellis is free and always will be. If it brightens your living room, you can
+[buy me a coffee ☕](https://paypal.me/fijea).
 <!-- - [GitHub Sponsors](https://github.com/sponsors/fijea-studio) — add once the Sponsors profile is approved -->
 
 Bug reports and ideas are just as welcome: open an [issue](../../issues).
