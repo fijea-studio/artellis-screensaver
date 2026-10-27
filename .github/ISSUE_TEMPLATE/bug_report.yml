@@ -35,7 +35,7 @@ body:
     id: version
     attributes:
       label: Artellis version
-      description: The Release you downloaded, or TV Settings > Apps > Artellis.
+      description: Shown at the bottom right of the Artellis settings page.
       placeholder: e.g. 1.0.0
   - type: textarea
     id: what

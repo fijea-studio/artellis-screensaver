@@ -100,7 +100,6 @@ public class SettingsActivity extends Activity {
         dp = getResources().getDisplayMetrics().density;
         regular = font(R.font.outfit_regular);
         light = font(R.font.outfit_light);
-        Typeface thin = font(R.font.outfit_extralight);
 
         FrameLayout root = new FrameLayout(this);
         Calendar now = Calendar.getInstance();
@@ -126,7 +125,15 @@ public class SettingsActivity extends Activity {
         root.addView(page, pageLp);
 
         // Top, full width: what it is.
-        page.addView(text(getString(R.string.app_name), thin, 42, 0xEBFFFFFF, 0));
+        ImageView logo = new ImageView(this);
+        logo.setImageResource(R.drawable.logo);
+        logo.setContentDescription(getString(R.string.app_name));
+        logo.setAdjustViewBounds(true);
+        LinearLayout.LayoutParams logoLp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, px(30));
+        logoLp.topMargin = px(8);
+        logoLp.bottomMargin = px(12);
+        page.addView(logo, logoLp);
         page.addView(text(getString(R.string.tagline), regular, 20, 0xD9FFFFFF, px(2)));
 
         LinearLayout columns = new LinearLayout(this);
@@ -225,6 +232,21 @@ public class SettingsActivity extends Activity {
         githubLp.leftMargin = side;
         githubLp.bottomMargin = px(36);
         root.addView(github, githubLp);
+
+        // Bottom right: which version this is, for update checks and bug reports.
+        String version = "";
+        try {
+            version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        if (version != null && !version.isEmpty()) {
+            TextView versionLine = text("Version " + version, light, 13, 0x73FFFFFF, 0);
+            FrameLayout.LayoutParams versionLp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.BOTTOM | Gravity.END);
+            versionLp.rightMargin = side;
+            versionLp.bottomMargin = px(36);
+            root.addView(versionLine, versionLp);
+        }
 
         setContentView(root);
         refresh();
